@@ -41,7 +41,7 @@ const UserProfileForm = () => {
         <input
           type='text'
           name='name'
-          className='flex-1 border px-2 py-1'
+          className='flex-1 border px-2 py-1 text-slate-900'
           defaultValue={session?.user?.name ?? ''}
         />
         <button className='rounded bg-slate-700 px-3 py-1 text-white'>Update</button>

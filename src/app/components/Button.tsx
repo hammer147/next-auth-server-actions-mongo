@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef } from 'react'
+import { LegacyRef, Ref, forwardRef } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -22,15 +22,23 @@ const variantStyles = {
   }
 }
 
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: keyof typeof variantStyles
+  color?: keyof (typeof variantStyles.solid | typeof variantStyles.outline)
+  href?: string
+}
+
 const Button = forwardRef(function Button(
-  { variant = 'solid', color = 'gray', className, href, ...props },
+  { variant = 'solid', color = 'gray', className, href, ...props }: ButtonProps,
   ref
 ) {
   className = clsx(baseStyles[variant], variantStyles[variant][color], className)
 
   return href ? (
+    /* @ts-ignore */
     <Link ref={ref} href={href} className={className} {...props} />
   ) : (
+    /* @ts-ignore */
     <button ref={ref} className={className} {...props} />
   )
 })
