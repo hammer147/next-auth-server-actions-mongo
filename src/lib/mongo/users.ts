@@ -3,7 +3,7 @@ import clientPromise from '@/lib/mongo/client'
 
 let client
 let db: Db
-let users: Collection<Document>
+let users: Collection
 
 async function init() {
   if (db) return
